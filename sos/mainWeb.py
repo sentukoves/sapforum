@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 import sys
 import sqlite3
-
+import datetime
 app = Flask(__name__)
 
 def data_db():
@@ -27,8 +27,7 @@ def index():
         flag = data_db()[0][2]
         result = data_db()[0][3]
         ochered = data_db()[0][4]
-
-        return render_template("rules.html" , Player=Player, flag=flag, ochered=ochered, result= result)
+        return render_template("rules.html" , Player=Player, flag=flag, ochered=ochered, result= result , datetime = str(datetime.datetime.now()))
 
 """ Измени Ip и HOST или выстави по дефолту 127.0.0.1 и порт 5000 """
 

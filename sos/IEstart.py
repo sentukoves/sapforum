@@ -12,7 +12,6 @@ def data_db(array, flag, result, ochered):
     con = sqlite3.connect(PATH_BASE)
     cur = con.cursor()
     try:
-
         cur.execute("DELETE  FROM input")
         con.commit()
 
@@ -64,7 +63,9 @@ IP не забываем указать ip-адресс машины на кот
 """
 
 
-array = [["Женя", "1000"], ["Леша", "1000"], ["Петя", "1000"]]
-open_webbrowser(array = array,  flags= 1, result= 146, ochered= 0).webOpenUrl()
-time.sleep(65)
+array = [["Женя", "1000"],]
+open_webbrowser(array = array,  flags= 1, result= 12543, ochered= 0).webOpenUrl()
+time.sleep(1500)
 open_webbrowser().closeWeb()
+
+

@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
-    <link rel="stylesheet" href="{{url_for('static' , filename= 'css/style.css')}}"/>
+
+
     <link rel="shortcut icon" type="image/x-icon" href="{{url_for('static' , filename= 'favicon.ico')}}">
 </head>
 <body>
-
-
-{% if flag == 1 %}
-
+    <link rel="stylesheet" href="{{url_for('static' , filename= 'css/style.css')}}"/>
 <div id="app">
+
     <div class="header">
+        {% if flag == 1 %}
+
         <a href="./index.html">
             <img src="{{url_for('static', filename='img/logo.png')}}" width="201" height="42">
         </a>
@@ -35,8 +36,8 @@
             </ol>
             <div class="footer">
                 <div class="legend">
-                    <div><img src="{{url_for('static' , filename= 'img/gold.png')}}"/> - руда</div>
-                    <div><img src="{{url_for('static' , filename= 'img/rubbish.png')}}"/> - рудозасоряющие</div>
+                    <div><img src="{{url_for('static' , filename= 'img/rubbish.png')}}"/> - руда</div>
+                    <div><img src="{{url_for('static' , filename= 'img/ore.png')}}"/> - рудозасоряющие</div>
                 </div>
                 <h3>Следуйте инструкции и у Вас все получится!</h3>
                 <h2>Приятной игры!</h2>
@@ -58,14 +59,38 @@
             {% endfor %}
             {% endif %}
 
-
-</div>
+        </div>
+ {% elif  flag == 0 %}
+    <link rel="stylesheet" href="{{url_for('static' , filename= 'css/style2.css')}}"/>
+         <img src="{{url_for('static', filename='img/logo.png')}}" width="201" height="42">
+        <h1>Результаты игры</h1>
+        <div class="headerDummy"></div>
+    </div>
+    <div class="contentWrapper">
+        <div class="subTitleWrapper">
+            <hr class="static"/>
+            <h3>Смена 10</h3>
+            <hr class="responsible"/>
+        </div>
+        <div class="participant">
+            <span><b>{{Player[0][0]}}</b></span>
+            <span>Табельный номер: <b>{{Player[0][1]}}</b></span>
+        </div>
+        <div class="kpi">
+            <div class="score">
+                <img src="{{url_for('static', filename='img/coins_large.png')}}">
+                {{result}}
+            </div>
+            <div class="time">
+                <img src="{{url_for('static', filename='img/clock.png')}}" height="20px">
+                <!--время окончания игры-->
+                {{datetime}}
+            </div>
+        </div>
+    </div>
 
 {% endif %}
-
-
-
-
-
+    </div>
+</div>
 </body>
 </html>
