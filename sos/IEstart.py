@@ -15,8 +15,8 @@ def data_db(array, flag, result, ochered):
         cur.execute("DELETE  FROM input")
         con.commit()
 
-        for name,schet in array:
-            cur.execute("INSERT INTO input (Name, Coin, flag, result , ochered) VALUES ('{}', {}, {}, {}, {})".format(str(name),schet,flag, result, ochered))
+        for name,schet,shift in array:
+            cur.execute("INSERT INTO input (Name, Coin, flag, result , ochered , shift ) VALUES ('{}', {}, {}, {}, {}, {})".format(str(name),schet,flag, result, ochered, shift))
     except Exception:
         print(sys.exc_info())
     else:
@@ -51,7 +51,8 @@ open_webbrowser.webOpenUrl():
     tabNum = Табельный номер
     flags = Указывает какой HTML запустить   результаты   (передать 0 ),  инструкции (передать 1)
     result = Результат человека
-    ochered = Запросили если в  очереди нету человека флаг 0 если есть передать 1
+    ochered = Запросили если в  оч
+    ереди нету человека флаг 0 если есть передать 1
 
 open_webbrowser().closeWeb() 
 
@@ -63,7 +64,7 @@ IP не забываем указать ip-адресс машины на кот
 """
 
 
-array = [["JENA", "100"],]
+array = [["JENA", "100" , 14],]
 open_webbrowser(array = array,  flags=0, result= 12543).webOpenUrl()
 time.sleep(10)
 open_webbrowser().closeWeb()

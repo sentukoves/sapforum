@@ -10,7 +10,7 @@ def data_db():
     con = sqlite3.connect(PATH_BASE)
     cur = con.cursor()
     try:
-        cur.execute("select Name , Coin , flag,  result , ochered from input where temp = 1")
+        cur.execute("select Name , Coin , flag,  result , ochered, shift from input where temp = 1")
     except Exception:
         print(sys.exc_info())
     else:
@@ -27,7 +27,10 @@ def index():
         flag = data_db()[0][2]
         result = data_db()[0][3]
         ochered = data_db()[0][4]
-        return render_template("rules.html" , Player=Player, flag=flag, ochered=ochered, result= result , datetime = str(datetime.datetime.now()))
+        shift = data_db()[0][5]
+        return render_template("rules.html" , Player=Player, flag=flag,
+                               ochered=ochered, result= result , shift=shift,
+                               datetime = str(datetime.datetime.now()))
 
 """ Измени Ip и HOST или выстави по дефолту 127.0.0.1 и порт 5000 """
 
