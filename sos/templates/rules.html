@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="{{url_for('static' , filename= 'css/style.css')}}"/>
+    <link rel="shortcut icon" type="image/x-icon" href="{{url_for('static' , filename= 'favicon.ico')}}">
+</head>
+<body>
+
+
+{% if flag == 1 %}
+
+<div id="app">
+    <div class="header">
+        <a href="./index.html">
+            <img src="{{url_for('static', filename='img/logo.png')}}" width="201" height="42">
+        </a>
+        <h1>Конвейер 1</h1>
+        <div class="headerDummy"></div>
+    </div>
+    <div class="contentWrapper">
+        <div class="content left">
+            <h2>Правила игры</h2>
+            <ol>
+                <li>Запустите конвейер.</li>
+                <li>На экране отобразится «рудозасоряющий» элемент.</li>
+                <li>При обнаружении «рудозасоряющего» элемента необходимо остановить конвейер и очистить ленту с помощью щупа.</li>
+                <li>Время простоя ленты должно быть минимальным, 7 пропущенных «рудозасоряющих» полностью ломают дробилку.</li>
+                <li>Каждые 0,2 сек простоя лишают Вас 5 баллов из 1000 исходных.</li>
+                <li>Каждый пропущенный «рудозасоряющий» элемент лишает Вас 100 баллов.</li>
+                <li>Постарайтесь достичь баланса между этими двумя факторами.</li>
+                <li>На весь процесс у Вас есть 1 минута.</li>
+                <li>Если в течение 40-минутной рабочей смены Ваш результат окажется в топ 3, то Вы получаете приз. Результаты смены отображаются в режиме онлайн на экране нашего стенда.</li>
+            </ol>
+            <div class="footer">
+                <div class="legend">
+                    <div><img src="{{url_for('static' , filename= 'img/gold.png')}}"/> - руда</div>
+                    <div><img src="{{url_for('static' , filename= 'img/rubbish.png')}}"/> - рудозасоряющие</div>
+                </div>
+                <h3>Следуйте инструкции и у Вас все получится!</h3>
+                <h2>Приятной игры!</h2>
+            </div>
+        </div>
+        <!--Если в очереди пусто, оставляем style="display: none", иначе убираем-->
+        {% if ochered == 1 %}
+        <div class="content right" style="display: none">  </div>
+        {% else %}
+        <div class="content right">
+            <h2>Следующий игрок</h2>
+            {% for NamePlayer in  Player %}
+            <div class="player">
+                <div class="name">
+                    <span><b>{{NamePlayer[0]}}</b></span>
+                    <span>Табельный номер: <b>{{NamePlayer[1]}}</b></span>
+                </div>
+                    </div>
+            {% endfor %}
+            {% endif %}
+
+
+</div>
+
+{% endif %}
+
+
+
+
+
+</body>
+</html>
