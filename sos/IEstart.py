@@ -26,7 +26,7 @@ def data_db(array, flag, result, ochered):
         return 1
 
 class open_webbrowser(object):
-    def __init__(self, array = None, flags = None, result = None, ochered=None):
+    def __init__(self, array = None, flags = 1, result = 1, ochered=0):
         self.array, self.flags, self.result, self.ochered = array, flags, result, ochered
         super(open_webbrowser, self).__init__()
     def webOpenUrl(self):
@@ -63,9 +63,8 @@ IP не забываем указать ip-адресс машины на кот
 """
 
 
-array = [["Женя", "1000"],]
-open_webbrowser(array = array,  flags= 1, result= 12543, ochered= 0).webOpenUrl()
-time.sleep(1500)
+array = [["JENA", "100"],]
+open_webbrowser(array = array,  flags=0, result= 12543).webOpenUrl()
+time.sleep(10)
 open_webbrowser().closeWeb()
-
 
